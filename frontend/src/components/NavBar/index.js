@@ -3,10 +3,10 @@ import React from 'react';
 
 function  NavBar() {
     return (
-        <div className={style.container}>
+        <nav className={style.container}>
             <img src="images/logo.png"/>
             <h1>Café</h1>
-        </div>
+        </nav>
     );
 };
 

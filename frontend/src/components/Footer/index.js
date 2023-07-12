@@ -1,10 +1,10 @@
 import style from './style.module.css';
 import React from 'react';
 
-function Footer(){
-    return(
+function Footer() {
+    return (
         <footer className={style.container}>
-            <h1>Footer</h1>
+            <p className={style.copy_right}><span>Café</span> &copy; 2023</p>
         </footer>
     );
 };

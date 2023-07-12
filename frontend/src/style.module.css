@@ -30,5 +30,28 @@ body::-webkit-scrollbar-thumb {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    background-color: #14F2C9;
 }
+
+html, body, #root{
+    background-color: #FFF;
+    height: 100%;
+}
+
+/* 
+$first-color: #010128;
+$second-color: #05055B;
+$blue-color: #242484;
+$card-color-blue: #05055B35;
+$ciano-color: #14F2C9;
+$black-color: #0D0D0D;
+$bold-color: #000000;
+$white-color: #ffffff;
+$white-color-light: #F0F0F080;
+$new-white: #FBFBFB;
+$card-color-white: #F3F3F4;
+$border-color: #E8E8E8;
+$disable-color: #858585;
+$disable-title: #636363;
+$grey-color-light: #D9D9D920;
+$gradient-color: linear-gradient(10.68deg, #05055B 17.98%, rgba(20, 242, 201, 0.67) 70.3%);
+*/

@@ -8,4 +8,14 @@
     align-items: center;
     column-gap: 10px;
     align-self: flex-end;
+    color: #FFF;
+}
+
+.copy_right{
+    margin-top: 2em;
+}
+
+.copy_right span{
+    font-weight: bold;
+    color: #14F2C9;
 }

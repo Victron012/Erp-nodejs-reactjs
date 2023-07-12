@@ -3,6 +3,7 @@ import React from 'react';
 import NavBar from './components/NavBar';
 import Footer from './components/Footer';
 import style from './style.module.css';
+import Home from './pages/Home';
 
 
 function App() {
@@ -11,7 +12,7 @@ function App() {
       <Router>
         <NavBar />
         <Routes>
-          <Route path="/" element={<></> /**Insira aqui */} />
+          <Route path="/" element={<Home/>} />
         </Routes>
         <Footer />
       </Router>
