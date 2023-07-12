@@ -1,0 +1,34 @@
+body{
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden;
+    font-family: 'Roboto', sans-serif;
+}
+
+body::-webkit-scrollbar {
+    width: 12px;
+    /* width of the entire scrollbar */
+}
+
+body::-webkit-scrollbar-track {
+    background: #05055B;
+    /* color of the tracking area */
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: #14F2C9;
+    /* color of the scroll thumb */
+    border-radius: 20px;
+    /* roundness of the scroll thumb */
+    border: 3px solid #05055B;
+    /* creates padding around scroll thumb */
+}
+
+.Container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-color: #14F2C9;
+}
