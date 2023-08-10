@@ -1,9 +1,11 @@
+@import '../../variables.module.css';
+
 .container{
     display: flex;
     flex-direction: column;
     width: 430px;
     height: 395px;
-    background-color: aqua;
+    background-color: var(--rosa);
     border-radius: 15px;
     padding: 1.5em;
     justify-content: space-around;

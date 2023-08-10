@@ -1,0 +1,28 @@
+@import '../../variables.module.css';
+
+
+.container{
+    width: 40%;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1em;
+    border: 2px solid var(--marrom);
+    border-radius: 10px;
+}
+
+.container img{
+    width: 130px;
+}
+
+.container:hover{
+    cursor: pointer;
+}
+
+@media(max-width: 800px){
+       .container{
+        width: 100%;
+       } 
+}

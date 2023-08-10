@@ -13,7 +13,7 @@ function Home(){
             <HomeOptions
                 image='/images/painel_adm.png'
                 text="Painel de Administração"
-                link="/Administração"
+                link="/adm"
             />
         </div>
     );

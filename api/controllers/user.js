@@ -105,7 +105,7 @@ export const deleteUser = async (req, res) => {
         const query = `update usuarios set ativo = false where idUsuario = ${id}`;
 
         db.query(query, (err) => {
-            if (err) return res.json(err);
+            if (err) return res.status(204).json(err);
 
             addLog("Exclusão de Usuário.", req.body.idUser, "Exclusão do usuário")
             return res.status(200).json("Usuário excluido com sucesso!");
@@ -122,10 +122,13 @@ export const login = async (req, res) => {
         db.query(query, async (err, response) => {
             if (err) return res.json(err);
 
+            if(response.length <= 0 ){
+                return res.status(204).json({msg: "Usuário não existe"});
+            }
             const checkPassword = await bcrypt.compare(req.body.senhaUsuario, response[0].senhaUsuario);
 
             if (!checkPassword) {
-                return res.json({ msg: "Senha inválida!" });
+                return res.status(204).json({ msg: "Senha inválida!" });
             } else {
                 response[0].senhaUsuario = "";
                 return res.status(200).json(response);
@@ -138,7 +141,7 @@ export const login = async (req, res) => {
 
 export const checkUser = (req, res) => {
     try {
-        const query = `select tipoUsuario from usuarios where uuidUsuario = '${req.params.id}' and ativo = true`;
+        const query = `select idUsuario, nomeUsuario, tipoUsuario from usuarios where uuidUsuario = '${req.params.id}' and ativo = true`;
         console.log(req.params.id);
         db.query(query, (err, response) => {
             if (err) return res.json(err);

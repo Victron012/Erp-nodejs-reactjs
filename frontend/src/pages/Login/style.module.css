@@ -1,0 +1,53 @@
+@import '../../variables.module.css';
+.container{
+    width: 100%;
+    padding: 4em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.containerForm{
+    background-color: var(--cinza-claro);
+    padding: 1em;
+    width: 20%;
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    border-radius: 15px;
+    row-gap: 20px;
+}
+
+.container input{
+    width: 100%;
+    height: 18px;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+.containerForm div{
+    width: 70%;
+    flex-wrap: wrap;
+}
+
+.btn{
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn button{
+    width: 85px;
+    height: 40px;
+    color: var(--creme);
+    background-color: var(--azul);
+    border: 1px solid var(--creme);
+    border-radius: 15px;
+    font-weight: bold;
+}
+
+.btn button:hover{
+    color: var(--azul);
+    background-color: var(--creme);
+}

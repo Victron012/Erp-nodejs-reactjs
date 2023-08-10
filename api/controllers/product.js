@@ -3,7 +3,7 @@ import { addLog } from "./log.js";
 
 export const getProducts = (_, res) => {
     try {
-        const query = "select produtos.idProduto, produtos.nomeProduto, produtos.valorProduto, produtos.imagemProduto, estoque.quantidade from produtos inner join estoque on produtos.idProduto = estoque.idProduto where ativo = true";
+        const query = "select produtos.idProduto, produtos.nomeProduto, produtos.valorProduto, produtos.imagemProduto from produtos where ativo = true";
         db.query(query, (err, response)=>{
             if(err) return res.json(err);
         

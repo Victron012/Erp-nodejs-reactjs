@@ -1,0 +1,16 @@
+@import '../../variables.module.css';
+
+.btn{
+    width: 85px;
+    height: 40px;
+    color: var(--creme);
+    background-color: var(--azul);
+    border: 1px solid var(--creme);
+    border-radius: 15px;
+    font-weight: bold;
+}
+
+.btn:hover{
+    color: var(--azul);
+    background-color: var(--creme);
+}

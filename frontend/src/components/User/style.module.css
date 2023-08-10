@@ -1,0 +1,29 @@
+@import '../../style.module.css';
+
+.container {
+    width: 230px;
+    height: 200px;
+    padding: 1em;
+    background-color: var(--creme);
+    border: 5px solid var(--marrom);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.container div{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    column-gap: 15px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
