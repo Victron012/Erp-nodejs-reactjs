@@ -3,9 +3,11 @@ import style from "./style.module.css";
 import Button from "../Button";
 import api from "../../api/api";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 
 function User({ nome, email, id, tipoUsuario, keyUser, getUsers }) {
+    const navigate = useNavigate();
 
     const tipo = () => {
         if (tipoUsuario === "C") {
@@ -13,7 +15,7 @@ function User({ nome, email, id, tipoUsuario, keyUser, getUsers }) {
         } else if (tipoUsuario === "A") {
             return "Admin"
         } else {
-            return "Super Admin"
+            return tipoUsuario//"Super Admin"
         }
     };
 
@@ -56,6 +58,7 @@ function User({ nome, email, id, tipoUsuario, keyUser, getUsers }) {
     };
 
     const handleOnEdit = () => {
+        navigate(`/usuarios/add/${id}`);
         toast.success("edit" + id)
     };
 

@@ -4,13 +4,10 @@ import api from "../../api/api";
 import User from "../../components/User";
 import { useNavigate } from "react-router-dom";
 import Button from "../../components/Button";
-import AddUser from "../../components/AddUser";
 
 
 function Usuarios() {
     const [usuarios, setUsuarios] = useState([]);
-    const [addUsuario, setAddUsuario] = useState(false);
-
     const storageData = localStorage.getItem('authToken');
     const navigate = useNavigate();
 
@@ -31,8 +28,8 @@ function Usuarios() {
         navigate("/adm");
     };
 
-    const changeAddUser = () => {
-        setAddUsuario(!addUsuario);
+    const AddUser = () => {
+        navigate("/usuarios/add");
     };
 
     const getUsers = () => {
@@ -48,13 +45,7 @@ function Usuarios() {
 
     return (
         <div className={style.container}>
-            {addUsuario &&
-                <AddUser
-                    cancel={() => changeAddUser}
-                    getUser={getUsers}
-                />
-            }
-            <div className={style.usuarios}>
+                <div className={style.usuarios}>
                 {usuarios.map((user) => (
                     <User
                         nome={user.nomeUsuario}
@@ -63,7 +54,6 @@ function Usuarios() {
                         id={user.idUsuario}
                         keyUser={user.idUsuario}
                         getUsers={() => getUsers}
-                        setAddUsuario={setAddUsuario}
                     />
                 ))}
             </div>
@@ -74,7 +64,7 @@ function Usuarios() {
                 />
                 <Button
                     texto="Adicionar"
-                    handleOnClick={() => changeAddUser}
+                    handleOnClick={() => AddUser}
                 />
             </div>
         </div>

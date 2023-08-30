@@ -1,15 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import style from './style.module.css';
 import Button from "../Button";
 import { toast } from "react-toastify";
 import api from "../../api/api";
+import { useNavigate, useParams } from "react-router-dom";
 
-function AddUser({ cancel, getUser, setAddUsuario }) {
+function AddUser() {
     const [nome, setNome] = useState("");
     const [email, setEmail] = useState("");
     const [tipoUsuario, settipoUsuario] = useState("C");
     const [senha, setSenha] = useState("");
     const [confirmaSenha, setConfirmaSenha] = useState("");
+    const {id} = useParams();
+    const navigate = useNavigate();
+
+    useEffect(()=>{
+         console.log(id);
+    },[]);
 
     const addUser = async () => {
         if (nome !== "" && email !== "" && senha !== "" & confirmaSenha !== "") {
@@ -27,13 +34,11 @@ function AddUser({ cancel, getUser, setAddUsuario }) {
                     .then((response) => {
                         if (response.status === 200) {
                             toast.success("Usuário adicionado com sucesso!");
-                            getUser();
-                            setAddUsuario(false);
                         } else {
-                            toast.error("Erro ao criar o usuário!")
+                            toast.error("Erro aqui ao criar o usuário!")
                         }
                     })
-                    .catch(() => toast.error("Erro ao criar o usuário"))
+                    .catch((err) => toast.error(err+"Erro ao criar o usuário"))
             } else {
                 toast.error("As senhas não são iguais!");
             }
@@ -41,6 +46,11 @@ function AddUser({ cancel, getUser, setAddUsuario }) {
             toast.error("Preencha todos os campos antes de prosseguir!");
         }
     };
+
+    const cancel = () => {
+        navigate("/usuarios")
+    };
+
     return (
         <div className={style.container}>
             <div className={style.subContainer}>
@@ -64,7 +74,7 @@ function AddUser({ cancel, getUser, setAddUsuario }) {
                 <div className={style.btn}>
                     <Button
                         texto="Voltar"
-                        handleOnClick={() => cancel()}
+                        handleOnClick={()=>cancel}
                     />
                     <Button
                         texto="Adicionar Usuário"
