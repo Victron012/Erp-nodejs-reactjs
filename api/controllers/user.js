@@ -17,6 +17,20 @@ export const getUsers = (_, res) => {
     }
 };
 
+export const getUser = (req, res) => {
+    try {
+        const query = `select nomeUsuario, emailUsuario, tipoUsuario, ativo from usuarios where ativo = true and idUsuario = ${req.params.id}`;
+
+        db.query(query, (err, response) => {
+            if (err) return res.json(err);
+
+            return res.status(200).json(response);
+        });
+    } catch (error) {
+        console.log(error);
+    }
+};
+
 export const addUser = async (req, res) => {
     try {
         const checkQuery = `select nomeUsuario from usuarios where emailUsuario = "${req.body.emailUsuario}" and ativo = true`;

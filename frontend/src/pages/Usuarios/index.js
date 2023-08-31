@@ -36,6 +36,7 @@ function Usuarios() {
         api.get("/users")
             .then((response) => {
                 setUsuarios(response.data);
+                console.log(response.data)
             });
     };
 
