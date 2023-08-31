@@ -19,3 +19,13 @@
 .container h1 {
     color: var(--creme);
 }
+
+.container button{
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    color: white;
+}
+
+.container button:hover{
+    cursor: pointer;
+}
