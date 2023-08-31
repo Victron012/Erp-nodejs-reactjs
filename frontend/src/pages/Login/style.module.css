@@ -10,7 +10,7 @@
 .containerForm{
     background-color: var(--cinza-claro);
     padding: 1em;
-    width: 20%;
+    width: 23%;
     height: 350px;
     display: flex;
     flex-direction: column;
@@ -33,21 +33,7 @@
 }
 
 .btn{
+    width: 100%;
     display: flex;
     justify-content: space-between;
-}
-
-.btn button{
-    width: 85px;
-    height: 40px;
-    color: var(--creme);
-    background-color: var(--azul);
-    border: 1px solid var(--creme);
-    border-radius: 15px;
-    font-weight: bold;
-}
-
-.btn button:hover{
-    color: var(--azul);
-    background-color: var(--creme);
 }

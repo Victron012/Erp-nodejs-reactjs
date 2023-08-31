@@ -3,23 +3,20 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import api from "../../api/api";
 
-function NavBar(logged) {
+function NavBar() {
     const [isLogged, setIsLogged] = useState(false);
     const storageData = localStorage.getItem('authToken');
     const navigate = useNavigate();
 
     useEffect(() => {
-        if(logged===true){
-            setIsLogged(true);
-        } else{
-            api.get(`users/checkUser/${storageData}`)
+        console.log(storageData+1)
+        api.get(`users/checkUser/${storageData}`)
             .then((response) => {
                 console.log(response.status)
                 if (response.status === 200) {
                     setIsLogged(true);
                 }
             })
-        }
     }, []);
 
     const handleLogOut = () => {
