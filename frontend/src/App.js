@@ -11,6 +11,8 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import api from './api/api';
 import AddUser from './components/AddUser';
+import Produtos from './pages/Produtos';
+import AddProduct from './components/AddProduct';
 
 
 function App() {
@@ -40,6 +42,9 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/usuarios" element={<Usuarios />} />
           <Route path="/usuarios/add/:id?" element={<AddUser />} />
+          <Route path="/produtos" element={<Produtos/>}/>
+          <Route path="/produtos/add/:id?" element={<AddProduct />} />
+
         </Routes>
         <ToastContainer autoClose={3000} position={toast.POSITION.BOTTOM_LEFT} />
         <Footer />

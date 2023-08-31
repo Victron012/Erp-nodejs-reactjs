@@ -161,10 +161,8 @@ export const checkUser = (req, res) => {
             if (err) return res.status(204).json(err);
 
             if (response && response.length > 0 && response!=null) {
-                console.log("r"+response);
                 return res.status(200).json(response);
             } else {
-                console.log("estou aqui")
                 return res.status(204).json({ msg: "Usuario nao existe" });
             }
         });

@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
 
-function User({ nome, email, id, tipoUsuario, keyUser, getUsers }) {
+function User({ nome, email, id, tipoUsuario, keyUser}) {
     const navigate = useNavigate();
 
     const tipo = () => {
@@ -15,7 +15,7 @@ function User({ nome, email, id, tipoUsuario, keyUser, getUsers }) {
         } else if (tipoUsuario === "A") {
             return "Admin"
         } else {
-            return tipoUsuario//"Super Admin"
+            return "Super Admin"
         }
     };
 
@@ -30,24 +30,10 @@ function User({ nome, email, id, tipoUsuario, keyUser, getUsers }) {
                         })
                             .then((res) => {
                                 if (res.status === 200) {
-                                    toast.success('Usuário excluido com sucesso!', {
-                                        hideProgressBar: false,
-                                        closeOnClick: true,
-                                        pauseOnHover: true,
-                                        draggable: true,
-                                        progress: undefined,
-                                        theme: "light",
-                                    });
-                                    getUsers();
+                                    toast.success('Usuário excluido com sucesso!');
+                                    window.location.reload(true);
                                 } else {
-                                    toast.error('Erro ao excluir usuário!', {
-                                        hideProgressBar: false,
-                                        closeOnClick: true,
-                                        pauseOnHover: true,
-                                        draggable: true,
-                                        progress: undefined,
-                                        theme: "light",
-                                    });
+                                    toast.error('Erro ao excluir usuário!');
                                 }
                             })
                     }else{
@@ -59,7 +45,6 @@ function User({ nome, email, id, tipoUsuario, keyUser, getUsers }) {
 
     const handleOnEdit = () => {
         navigate(`/usuarios/add/${id}`);
-        toast.success("edit" + id)
     };
 
     return (
@@ -79,6 +64,6 @@ function User({ nome, email, id, tipoUsuario, keyUser, getUsers }) {
             </div>
         </div>
     );
-};
+}
 
 export default User;

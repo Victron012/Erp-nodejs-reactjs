@@ -14,16 +14,29 @@ export const getProducts = (_, res) => {
     }
 };
 
+export const getProduct = (req, res) => {
+    try {
+        const query = `select nomeProduto, valorProduto, imagemProduto from produtos where ativo = true and idProduto = ${req.params.id}`;
+        db.query(query, (err, response)=>{
+            if(err) return res.status(204).json(err);
+        
+            return res.status(200).json(response);
+        })
+    } catch (error) {
+        console.log(error);
+    }
+};
+
 export const addProducts = (req, res) => {
     try {
         const checkQuery = `select nomeProduto from produtos where nomeProduto = "${req.body.nomeProduto}" and ativo = true`;
         db.query(checkQuery, (err, response) => {
             if (err) {
-                return res.json(err);
+                return res.status(500).json(err);
             }
 
             if (response && response.length > 0) {
-                return res.json({ msg: "Produto já cadastrado!" });
+                return res.status(500).json({ msg: "Produto já cadastrado!" });
             }
         })
 
@@ -39,7 +52,7 @@ export const addProducts = (req, res) => {
                 const query = `update produtos set nomeProduto = '${nomeProduto}', valorProduto = '${valorProduto}', imagemProduto = '${imagemProduto}', ativo = true where nomeProduto = '${nomeProduto}'`;
 
                 db.query(query, (err) => {
-                    if (err) return res.json(err);
+                    if (err) return res.status(204).json(err);
 
                     addLog("Reativação de Produto", req.body.idUser, `Reativação do produto ${nomeProduto}`);
 
@@ -54,7 +67,7 @@ export const addProducts = (req, res) => {
                     true
                 ];
                 db.query(query, [values], (err)=>{
-                    if(err) return res.json(err);
+                    if(err) return res.staus(204).json(err);
 
                     addLog("Criação de Produto", req.body.idUser, `Criação do produto ${nomeProduto}`);
                     return res.status(200).json({msg: "Produto cadastrado com sucesso!"});
@@ -68,9 +81,9 @@ export const addProducts = (req, res) => {
 
 export const editProduct = (req, res) => {
     try {
-        const query = `update produtos set nomeProduto = '${req.body.nomeProduto}', valorProduto = '${req.body.valorProduto}',  imagemProduto = '${req.body.imagemProduto}' where idProduto = ${req.params.id}`;
+        const query = `update produtos set nomeProduto = '${req.body.nomeProduto}', valorProduto = '${req.body.valorProduto}' where idProduto = ${req.params.id}`;
         db.query(query, (err) => {
-            if(err) return res.json(err);
+            if(err) return res.status(204).json(err);
 
             addLog("Edição de Produto", req.body.idUser, `Edição do produto ${req.body.nomeProduto}`);
             return res.status(200).json({msg: "Produto editado com sucesso!"});
@@ -84,7 +97,7 @@ export const deleteProduct = (req, res) => {
     try {
         const query = `update produtos set ativo = false where idProduto = ${req.params.id}`;
         db.query(query, (err)=>{
-            if(err) return res.json(err);
+            if(err) return res.status(204).json(err);
 
             addLog("Exclusão de Produto", req.body.idUser, `Exclusão do produto ${req.body.nomeProduto}`);
             return res.status(200).json({msg: "Produto excluido com sucesso!"});

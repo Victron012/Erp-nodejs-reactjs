@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import style from './style.module.css';
 import api from "../../api/api";
-import User from "../../components/User";
+import Product from "../../components/Product";
 import { useNavigate } from "react-router-dom";
 import Button from "../../components/Button";
 
 
-function Usuarios() {
-    const [usuarios, setUsuarios] = useState([]);
+function Produtos() {
+    const [produtos, setProdutos] = useState([]);
     const storageData = localStorage.getItem('authToken');
     const navigate = useNavigate();
 
@@ -29,30 +29,29 @@ function Usuarios() {
     };
 
     const AddUser = () => {
-        navigate("/usuarios/add");
+        navigate("/produtos/add");
     };
 
-    const getUsers = () => {
-        api.get("/users")
+    const getProducts = () => {
+        api.get("/products")
             .then((response) => {
-                setUsuarios(response.data);
+                setProdutos(response.data);
             });
     };
 
     useEffect(() => {
-        getUsers();
+        getProducts();
     }, []);
 
     return (
         <div className={style.container}>
-            <div className={style.usuarios}>
-                {usuarios.map((user) => (
-                    <User
-                        nome={user.nomeUsuario}
-                        email={user.emailUsuario}
-                        tipoUsuario={user.tipoUsuario}
-                        id={user.idUsuario}
-                        keyUser={user.idUsuario}
+                <div className={style.usuarios}>
+                {produtos.map((produto) => (
+                    <Product
+                        nome={produto.nomeProduto}
+                        imagem={produto.imagemProduto}
+                        preco={produto.valorProduto}
+                        id={produto.idProduto}
                     />
                 ))}
             </div>
@@ -68,6 +67,6 @@ function Usuarios() {
             </div>
         </div>
     );
-}
+};
 
-export default Usuarios;
+export default Produtos;

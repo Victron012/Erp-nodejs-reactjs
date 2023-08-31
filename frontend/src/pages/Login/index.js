@@ -3,6 +3,7 @@ import style from './style.module.css';
 import { useNavigate } from "react-router-dom";
 import api from "../../api/api";
 import Button from "../../components/Button";
+import { toast } from "react-toastify";
 
 function Login() {
     const [email, setEmail] = useState("");
@@ -34,13 +35,14 @@ function Login() {
                 console.log(response);
                 if (response.status === 200) {
                     localStorage.setItem('authToken', response.data[0].uuidUsuario);
-                    localStorage.setItem('id', response.data[0].idUsario);
+                    localStorage.setItem('id', response.data[0].idUsuario);
+                    console.log(localStorage.getItem('id'));
                     setError("");
                     navigate('/adm');
                 } else {
                     setError("Usuário ou senha incorretos!");
                 }
-            })
+            }).catch(()=>toast.error("Erro ao fazer o login"));
     };
 
     const cancel = () => {

@@ -38,7 +38,7 @@ export const getProductsEstoque = (req, res) => {
                         where 
                             estoque.idProduto = ${req.params.id}`;
         db.query(query, (err, response) => {
-            if (err) return res.json(err);
+            if (err) return res.status(204).json(err);
 
             return res.status(200).json(response);
         })

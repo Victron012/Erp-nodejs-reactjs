@@ -1,0 +1,28 @@
+@import "../../style.module.css";
+
+.container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1em;
+}
+
+.usuarios {
+    width: 80%;
+    min-height: 500px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    row-gap: 20px;
+    column-gap: 20px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
