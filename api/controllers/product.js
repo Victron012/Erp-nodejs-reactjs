@@ -1,5 +1,6 @@
 import { db } from "../db.js";
 import { addLog } from "./log.js";
+import { addProductsEstoque } from "./estoque.js";
 
 export const getProducts = (_, res) => {
     try {

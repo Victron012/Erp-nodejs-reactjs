@@ -13,6 +13,7 @@ import api from './api/api';
 import AddUser from './components/AddUser';
 import Produtos from './pages/Produtos';
 import AddProduct from './components/AddProduct';
+import Estoque from './pages/Estoque';
 
 
 function App() {
@@ -44,7 +45,7 @@ function App() {
           <Route path="/usuarios/add/:id?" element={<AddUser />} />
           <Route path="/produtos" element={<Produtos/>}/>
           <Route path="/produtos/add/:id?" element={<AddProduct />} />
-
+          <Route path="/estoque" element={<Estoque />} />
         </Routes>
         <ToastContainer autoClose={3000} position={toast.POSITION.BOTTOM_LEFT} />
         <Footer />
