@@ -116,12 +116,6 @@ function AddProduct() {
                     />
                 </div>
             </div>
-            {/* {editPassword &&
-                <EditPassword
-                    setEditPassword={setEditPassword}
-                    id={id}
-                />
-            } */}
         </div>
     );
 };

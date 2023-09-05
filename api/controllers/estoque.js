@@ -41,7 +41,7 @@ export const getProductsEstoque = (req, res) => {
             if (err) return res.status(204).json(err);
 
             return res.status(200).json(response);
-        })
+        });
     } catch (error) {
         console.log(error);
     }
@@ -61,7 +61,7 @@ export const addProductsEstoque = (req, res) => {
 
             if (response && response.length > 0) {
                 const idEstoque = response[0].idEstoque;
-                const quantidade = response[0].quantidade + req.body.quantidade;
+                const quantidade = parseInt(response[0].quantidade) + parseInt(req.body.quantidade);
                 const query = `update estoque set quantidade = ${quantidade} where idEstoque = ${idEstoque}`;
                 db.query(query, (err) => {
                     if (err) return res.json(err);
@@ -91,9 +91,9 @@ export const addProductsEstoque = (req, res) => {
 };
 
 export const diminuiEstoque = (id, quantidade, quantidadeEstoque) => {
-    try {       
+    try {
         const novaQuantiadade = quantidadeEstoque - quantidade;
-        console.log("id: " + id + ", quantidade: "+quantidade+", quantidadeAtual: "+quantidadeEstoque);
+        console.log("id: " + id + ", quantidade: " + quantidade + ", quantidadeAtual: " + quantidadeEstoque);
         const query = `update estoque set quantidade = ${novaQuantiadade} where idProduto = ${id}`;
         db.query(query, (err) => {
             if (err) return console.log("Erro ao diminuir estoque");
@@ -103,3 +103,17 @@ export const diminuiEstoque = (id, quantidade, quantidadeEstoque) => {
         console.log(error);
     }
 };
+
+export const removeEstoque = (req, res) => {
+    try {
+        const query = `delete from estoque where idProduto = ${req.params.id}`;
+        db.query(query, (err, response) => {
+            if (err) return res.json(err);
+
+            addLog("Exclusão do estoque", req.body.idUser, `Exclusão do produto ${req.params.id}`);
+            return res.status(200).json(response);
+        });
+    } catch (error) {
+        console.log(error);
+    }
+}

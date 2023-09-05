@@ -22,11 +22,11 @@ function Estoque() {
     }, [])
 
     const criaEstoque = () => {
-
+        navigate("/estoque/add");
     }
 
-    const addItenEstoque = () => {
-
+    const editEstoque = (id) => {
+        navigate(`/estoque/add/${id}`);
     }
 
     const deleteEstoque = (id) => {
@@ -39,7 +39,7 @@ function Estoque() {
                 window.location.reload(true);
             }
         })
-        .catch(() => toast.error("Não foi possível excluir o estoque!"))
+        .catch((e) => toast.error(e+"Não foi possível excluir o estoque!"))
     }
 
     const cancel = () => {
@@ -60,7 +60,7 @@ function Estoque() {
                             <tr>
                                 <td>{est.nomeProduto}</td>
                                 <td className={style.qnt}>{est.quantidade}</td>
-                                <td className={style.act}>+/<p onClick={() => deleteEstoque(est.idEstoque)}>Trash</p></td>
+                                <td className={style.act}><p onClick={() => editEstoque(est.idEstoque)}>+</p>/<p onClick={() => deleteEstoque(est.idEstoque)}>Trash</p></td>
                             </tr>
                         ))}
                     </table>
@@ -72,7 +72,7 @@ function Estoque() {
                     />
                     <Button
                         texto="Criar Novo Estoque"
-                        handleOnClick={() => { }}
+                        handleOnClick={() => criaEstoque}
                     />
                 </div>
             </div>

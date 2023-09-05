@@ -13,6 +13,7 @@ function Produtos() {
 
     useEffect(() => {
         checkId(storageData);
+        getProducts();
     }, []);
 
     const checkId = (token) => {
@@ -38,10 +39,6 @@ function Produtos() {
                 setProdutos(response.data);
             });
     };
-
-    useEffect(() => {
-        getProducts();
-    }, []);
 
     return (
         <div className={style.container}>
